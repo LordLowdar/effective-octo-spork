@@ -1,7 +1,22 @@
 var timeDisplay = $("#currentDay");
 var tasks = $(".time-block");
-var times = ["9AM", "10AM", "11AM", "12AM", "1PM", "2PM"];
+var times = [
+  "9AM",
+  "10AM",
+  "11AM",
+  "12PM",
+  "1PM",
+  "2PM",
+  "3PM",
+  "4PM",
+  "5PM",
+  "6PM",
+  "7PM",
+  "8PM",
+  "9PM",
+];
 var identify = [];
+const textValue = document.getElementsByClassName(".textarea");
 
 function displayTime() {
   var rightNow = moment().format("MMM DD, YYYY [at] hh:mm:ss a");
@@ -33,9 +48,9 @@ taskList();
 
 var button = document.getElementsByClassName(".saveBtn");
 $(".saveBtn").on("click", function () {
-  console.log("tesitcles");
+  console.log(textValue);
 });
+const value = textValue.value;
+console.log(value);
 
-// document.querySelector(".saveBtn").addEventListener("click", saveTask() => {
-//   document.querySelector("button").click();
-// })
+//NEED A FUNCTION TO CHECK AGAINST TIME TO KNOW WHT TO COLOR
