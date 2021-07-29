@@ -1,22 +1,23 @@
 var timeDisplay = $("#currentDay");
+var currentHour = moment().hour();
 var tasks = $(".time-block");
 var times = [
-  "9AM",
-  "10AM",
-  "11AM",
-  "12PM",
-  "1PM",
-  "2PM",
-  "3PM",
-  "4PM",
-  "5PM",
-  "6PM",
-  "7PM",
-  "8PM",
-  "9PM",
+  "9",
+  "10",
+  "11",
+  "12",
+  "13",
+  "14",
+  "15",
+  "16",
+  "17",
+  "18",
+  "19",
+  "20",
+  "21",
 ];
 var identify = [];
-const textValue = document.getElementsByClassName(".textarea");
+const textValue = document.getElementsByClassName(".textarea")[0];
 
 function displayTime() {
   var rightNow = moment().format("MMM DD, YYYY [at] hh:mm:ss a");
@@ -40,17 +41,30 @@ function taskList() {
     var bttn = document.createElement("div");
     bttn.classList.add("saveBtn", "col-1");
     bttn.innerHTML = `<i class="bi bi-save"></i>`;
+    bttn.setAttribute("id", times[i]);
     tasks.append(rows);
     $(rows).append(timeSlot, areaText, bttn);
+    var blockTime = times[i];
+    console.log(blockTime);
   }
 }
 taskList();
 
-var button = document.getElementsByClassName(".saveBtn");
-$(".saveBtn").on("click", function () {
-  console.log(textValue);
+$(".saveBtn").each(function () {
+  var blockHour = $(this).attr("id");
+  console.log(blockHour);
+  if (blockHour < currentHour) {
+    $(".row").addClass("past");
+    $(".row").removeClass("future");
+    $(".row").removeClass("present");
+  } else if (blockHour > currentHour) {
+    $(".row").addClass("future");
+    $(".row").removeClass("past");
+    $(".row").removeClass("present");
+  } else if (blockHour == currentHour) {
+    $(".row").addClass("present");
+    $(".row").removeClass("past");
+    $(".row").removeClass("future");
+  }
+  console.log(currentHour, blockHour.value);
 });
-const value = textValue.value;
-console.log(value);
-
-//NEED A FUNCTION TO CHECK AGAINST TIME TO KNOW WHT TO COLOR
