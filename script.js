@@ -52,19 +52,25 @@ taskList();
 
 $(".saveBtn").each(function () {
   var blockHour = $(this).attr("id");
-  console.log(blockHour);
+
   if (blockHour < currentHour) {
-    $(".row").addClass("past");
-    $(".row").removeClass("future");
-    $(".row").removeClass("present");
+    $(this).parent().addClass("past");
+    $(this).parent().removeClass("future");
+    $(this).parent().removeClass("present");
   } else if (blockHour > currentHour) {
-    $(".row").addClass("future");
-    $(".row").removeClass("past");
-    $(".row").removeClass("present");
+    $(this).parent().addClass("future");
+    $(this).parent().removeClass("past");
+    $(this).parent().removeClass("present");
   } else if (blockHour == currentHour) {
-    $(".row").addClass("present");
-    $(".row").removeClass("past");
-    $(".row").removeClass("future");
+    $(this).parent().addClass("present");
+    $(this).parent().removeClass("past");
+    $(this).parent().removeClass("future");
   }
-  console.log(currentHour, blockHour.value);
+  console.log(currentHour, blockHour);
 });
+
+document.getElementById("9").onclick = function () {
+  console.log("happened");
+};
+
+document.getElementsByClassName();
