@@ -20,10 +20,10 @@ var identify = [];
 const textValue = document.getElementsByClassName(".textarea")[0];
 
 function displayTime() {
-  var rightNow = moment().format("MMM DD, YYYY [at] hh:mm:ss a");
+  var rightNow = moment().format("MMM DD, YYYY [at] HH:mm:ss a");
   timeDisplay.text(rightNow);
   setInterval(() => {
-    var rightNow = moment().format("MMM DD, YYYY [at] hh:mm:ss a");
+    var rightNow = moment().format("MMM DD, YYYY [at] HH:mm:ss a");
     timeDisplay.text(rightNow);
   }, 1000);
 }
@@ -38,7 +38,7 @@ function taskList() {
     timeSlot.textContent = times[i];
     var areaText = document.createElement("textarea");
     areaText.classList.add("col-10");
-    var bttn = document.createElement("div");
+    var bttn = document.createElement("button");
     bttn.classList.add("saveBtn", "col-1");
     bttn.innerHTML = `<i class="bi bi-save"></i>`;
     bttn.setAttribute("id", times[i]);
@@ -69,8 +69,7 @@ $(".saveBtn").each(function () {
   console.log(currentHour, blockHour);
 });
 
-document.getElementById("9").onclick = function () {
-  console.log("happened");
-};
-
-document.getElementsByClassName();
+$(".saveBtn").click(function () {
+  console.log($(this).prev().val());
+  localStorage.setItem($(this).attr("id"), $(this).prev().val());
+});
