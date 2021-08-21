@@ -18,6 +18,14 @@ var times = [
 ];
 var identify = [];
 const textValue = document.getElementsByClassName(".textarea")[0];
+window.onload = function () {
+  for (let i = 0; i < times.length; i++) {
+    console.log(times[i]);
+    if (localStorage.getItem(times[i])) {
+      $(`#${times[i]}`).prev().val(localStorage.getItem(times[i]));
+    }
+  }
+};
 
 function displayTime() {
   var rightNow = moment().format("MMM DD, YYYY [at] HH:mm:ss a");
